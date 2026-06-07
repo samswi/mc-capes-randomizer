@@ -164,6 +164,8 @@ public class CapeChoosingScreen extends Screen {
         @Override
         protected void extractContents(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float deltaTicks) {
             graphics.fill(getX() + 1, getY() + 1, getX() + getWidth() - 1, getY() + getHeight() - 1, toggled ? 0x4400FF00 : 0x44FF0000);
+            if (defaultButton.isHovered()) isHovered = false;
+            graphics.outline(getX() , getY(), getWidth(), getHeight(), isHoveredOrFocused() ? 0xFFFFFFFF : 0xFF000000);
             defaultButton.setPosition(getX() + 5, getY() + 111);
             defaultButton.extractRenderState(graphics, mouseX, mouseY, deltaTicks);
             graphics.blit(RenderPipelines.GUI_TEXTURED, Identifier.parse("capes:" + associatedCape.id), getX() + 10, getY() + 10, (float)1, (float)1, 60, 96, 10, 16, 64, 32, toggled ? 0xFFFFFFFF : 0x44FFFFFF);
@@ -177,7 +179,12 @@ public class CapeChoosingScreen extends Screen {
 
         @Override
         public void onClick(MouseButtonEvent click, boolean doubled) {
-            if (defaultButton.mouseClicked(click, false)) {
+            if (click.x() >= (double)defaultButton.getX()
+                    && click.y() >= (double)defaultButton.getY()
+                    && click.x() < (double)defaultButton.getRight()
+                    && click.y() < (double)defaultButton.getBottom()
+            ){
+                defaultButton.mouseClicked(click, false);
                 return;
             }
             onPress(click);
@@ -212,8 +219,6 @@ public class CapeChoosingScreen extends Screen {
         public void setFocused(@Nullable GuiEventListener focused) {
 
         }
-
-
     }
 
 
