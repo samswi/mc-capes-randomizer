@@ -7,6 +7,6 @@ import net.minecraft.client.Minecraft;
 public class ModMenuApiImpl implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> new CapeChoosingScreen(Minecraft.getInstance().screen);
+        return parent -> new CapeChoosingScreen(Minecraft.getInstance().gui.screen());
     }
 }

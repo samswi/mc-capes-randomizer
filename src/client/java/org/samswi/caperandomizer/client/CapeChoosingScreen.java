@@ -93,7 +93,7 @@ public class CapeChoosingScreen extends Screen {
 
     @Override
     public void onClose() {
-        minecraft.setScreen(oldScreen);
+        minecraft.gui.setScreen(oldScreen);
         try {
             CapeRandomizerClient.saveJsonToFile(CapeRandomizerClient.favoriteCapes, CapeRandomizerClient.favoriteCapesFile);
         } catch (Exception ignore) {}
