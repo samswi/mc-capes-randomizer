@@ -8,7 +8,8 @@
   "accessWidener" : "caperandomizer.classtweaker",
   "contact": {
     "homepage": "https://modrinth.com/mod/cape-randomizer",
-    "sources": "https://github.com/samswi/minecraft-capes-randomizer/"
+    "sources": "https://github.com/samswi/minecraft-capes-randomizer/",
+    "issues": "https://github.com/samswi/mc-capes-randomizer/issues"
   },
   "license": "MIT",
   "environment": "*",
