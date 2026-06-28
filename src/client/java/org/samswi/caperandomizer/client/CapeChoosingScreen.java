@@ -34,12 +34,13 @@ public class CapeChoosingScreen extends Screen {
     private ScrollableLayout scrollableLayoutWidget;
     GridLayout grid;
     GridLayout.RowHelper gridAdder;
-    Screen oldScreen;
+    Screen lastScreen;
     boolean noCapes;
     public final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
 
-    public CapeChoosingScreen(Screen screen) {
+    public CapeChoosingScreen(Screen lastScreen) {
         super(Component.nullToEmpty("hi hi hello :)"));
+        this.lastScreen = lastScreen;
 
         layout.addTitleHeader(Component.nullToEmpty("Select favorite capes"), minecraft.font);
         this.layout.addToFooter(Button.builder(CommonComponents.GUI_DONE, (button) -> {
@@ -93,7 +94,7 @@ public class CapeChoosingScreen extends Screen {
 
     @Override
     public void onClose() {
-        minecraft.gui.setScreen(oldScreen);
+        this.minecraft.gui.setScreen(this.lastScreen);
         try {
             CapeRandomizerClient.saveJsonToFile(CapeRandomizerClient.favoriteCapes, CapeRandomizerClient.favoriteCapesFile);
         } catch (Exception ignore) {}
