@@ -4,6 +4,7 @@
   "version": "${version}",
   "name": "Cape Randomizer",
   "description": "Mod for people who can't decide on their favorite cape.",
+  "icon":"assets/icon.png",
   "authors": ["samswi"],
   "accessWidener" : "caperandomizer.classtweaker",
   "contact": {
